@@ -1,0 +1,17 @@
+name: C++ CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  check-format-lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v6
+      - name: Install clang-format and clang-tidy
+        run: apt install clang-format clang-tidy
+      - name: Check format
+        run: find . -iname '*.h' -o -iname '*.cpp' | xargs clang-format -style="Microsoft" --dry-run --Werror
+        # https://stackoverflow.com/a/36046965
