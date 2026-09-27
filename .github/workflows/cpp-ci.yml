@@ -1,0 +1,28 @@
+name: C++ CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v6
+      - name: Install clang-tidy
+        run: sudo apt install clang-tidy
+      - name: Configure CMake
+        run: cmake -B build -S .
+      - name: Build
+        run: cmake --build build
+  check-format:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v6
+      - name: Install clang-format
+        run: sudo apt install clang-format
+      - name: Check format
+        run: find src -iname '*.h' -o -iname '*.cpp' | xargs clang-format -style="Microsoft" --dry-run --Werror
+        # https://stackoverflow.com/a/36046965
