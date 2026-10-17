@@ -1,9 +1,5 @@
 #include "lock-counter.h"
 
-LockCounter::LockCounter() : counter{0}
-{
-}
-
 void LockCounter::increment()
 {
     mtx.lock();

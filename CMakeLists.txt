@@ -6,4 +6,6 @@ set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=-*,clang-analyzer-*;-warnings-as-er
 add_executable(counter
     src/main.cpp
     src/lock-counter.cpp
+    src/cas-counter.cpp
+    src/faa-counter.cpp
 )

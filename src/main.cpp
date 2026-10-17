@@ -1,4 +1,6 @@
+#include "cas-counter.h"
 #include "concurrent-counter.h"
+#include "faa-counter.h"
 #include "lock-counter.h"
 #include <iostream>
 #include <thread>
@@ -6,7 +8,6 @@
 
 using namespace std;
 
-LockCounter lock_counter;
 int normal_counter;
 
 void add_n(ConcurrentCounter *counter, int n)
@@ -20,10 +21,12 @@ void add_n(ConcurrentCounter *counter, int n)
 
 int main(int, char **)
 {
+    ConcurrentCounter *counter = new FaaCounter();
     int n = 100000;
-    thread t1(add_n, &lock_counter, n);
-    thread t2(add_n, &lock_counter, n);
+    thread t1(add_n, counter, n);
+    thread t2(add_n, counter, n);
     t1.join();
     t2.join();
-    cout << "Lock counter: " << lock_counter.get() << "\nNormal counter: " << normal_counter << "\n";
+    cout << "Concurrent counter: " << counter->get() << "\nNormal counter: " << normal_counter << "\n";
+    delete counter;
 }
