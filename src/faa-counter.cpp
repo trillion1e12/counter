@@ -1,8 +1,8 @@
 #include "faa-counter.h"
 
-void FaaCounter::increment()
+int FaaCounter::increment()
 {
-    counter.fetch_add(1);
+    return counter.fetch_add(1);
 }
 
 int FaaCounter::get()

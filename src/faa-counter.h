@@ -9,6 +9,6 @@ class FaaCounter : public ConcurrentCounter
     std::atomic<int> counter = 0;
 
   public:
-    void increment();
+    int increment();
     int get();
 };

@@ -1,10 +1,11 @@
 #include "lock-counter.h"
 
-void LockCounter::increment()
+int LockCounter::increment()
 {
     mtx.lock();
-    ++counter;
+    int previous_count = counter++;
     mtx.unlock();
+    return previous_count;
 }
 
 int LockCounter::get()

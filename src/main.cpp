@@ -14,7 +14,12 @@ void add_n(ConcurrentCounter *counter, int n)
 {
     for (size_t i = 0; i < n; i++)
     {
-        counter->increment();
+        int val = counter->increment();
+        if (i == n - 1)
+        {
+            cout << "Thread: " << val << "\n";
+        }
+
         ++normal_counter;
     }
 }

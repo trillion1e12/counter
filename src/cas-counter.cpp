@@ -1,6 +1,6 @@
 #include "cas-counter.h"
 
-void CasCounter::increment()
+int CasCounter::increment()
 {
     int oldval = counter.load();
     int newval = oldval + 1;
@@ -8,6 +8,7 @@ void CasCounter::increment()
     {
         newval = oldval + 1;
     }
+    return oldval;
 }
 
 int CasCounter::get()

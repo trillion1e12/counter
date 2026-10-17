@@ -10,6 +10,6 @@ class LockCounter : public ConcurrentCounter
     int counter = 0;
 
   public:
-    void increment();
+    int increment();
     int get();
 };
