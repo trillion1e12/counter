@@ -9,3 +9,8 @@ int FaaCounter::get()
 {
     return counter.load();
 }
+
+void FaaCounter::reset()
+{
+    counter.store(0);
+}

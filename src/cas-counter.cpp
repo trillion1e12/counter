@@ -15,3 +15,8 @@ int CasCounter::get()
 {
     return counter.load();
 }
+
+void CasCounter::reset()
+{
+    counter.store(0);
+}
