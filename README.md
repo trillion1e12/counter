@@ -13,5 +13,7 @@ Implementation with C++
 2. Run
 
     ```bash
-    ./build/counter 5 1000000
+    ./build/counter
     ```
+
+It should take around 30s - 1m to run
