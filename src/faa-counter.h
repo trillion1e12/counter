@@ -11,4 +11,5 @@ class FaaCounter : public ConcurrentCounter
   public:
     int increment();
     int get();
+    void reset();
 };

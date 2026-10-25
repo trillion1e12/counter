@@ -9,4 +9,7 @@ class ConcurrentCounter
 
     /// @return The current value of the counter
     virtual int get() = 0;
+
+    /// @brief Reset the counter to 0
+    virtual void reset() = 0;
 };

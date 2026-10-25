@@ -15,3 +15,10 @@ int LockCounter::get()
     mtx.unlock();
     return current_count;
 }
+
+void LockCounter::reset()
+{
+    mtx.lock();
+    counter = 0;
+    mtx.unlock();
+}
